@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="765f7655-bde7-44bb-ac40-fae2db051b24" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/HomePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/RegisterPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/SearchPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/BaseClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/DataDriven.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/utils/PropertiesDriven.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/CasosDePrueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/CasosDePrueba.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +46,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Juan.Ferreira/Downloads/SeleniumPrimerosPasos&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Juan.Ferreira/Downloads/SeleniumPrimerosPasos/src/test/java/tests&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -47,6 +54,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Juan.Ferreira\Downloads\SeleniumPrimerosPasos\src\test\java\tests" />
+      <recent name="C:\Users\Juan.Ferreira\Downloads\SeleniumPrimerosPasos\src\test\java\utils" />
+      <recent name="C:\Users\Juan.Ferreira\Downloads\SeleniumPrimerosPasos\src\test\java\pages" />
       <recent name="C:\Users\domingo.saavedra\Downloads\SeleniumPrimerosPasos\src\test\resources\drivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -54,18 +64,18 @@
       <recent name="ejemplosSelenium" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.CasosDePrueba.CP005_IS_fono">
-    <configuration name="CasosDePrueba.CP003_IS_Google" type="TestNG" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="TestNG.CasosDePrueba.CP001_Buscar_Genero">
+    <configuration name="CasosDePrueba.CP001_Buscar_Genero (1)" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SeleniumPrimerosPasos" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tests.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CasosDePrueba" />
-      <option name="METHOD_NAME" value="CP003_IS_Google" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.CasosDePrueba" />
+      <option name="METHOD_NAME" value="CP001_Buscar_Genero" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -73,7 +83,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CasosDePrueba.CP003_Iniciar_Sesion_Fb" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="CasosDePrueba.CP001_Buscar_Genero" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SeleniumPrimerosPasos" />
       <extension name="coverage">
         <pattern>
@@ -83,7 +93,25 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.CasosDePrueba" />
-      <option name="METHOD_NAME" value="CP003_Iniciar_Sesion_Fb" />
+      <option name="METHOD_NAME" value="CP001_Buscar_Genero" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CasosDePrueba.CP004_IS_Google" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="SeleniumPrimerosPasos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CasosDePrueba" />
+      <option name="METHOD_NAME" value="CP004_IS_Google" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -127,31 +155,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CasosDePrueba.cp001_btnISFallidoApple" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="SeleniumPrimerosPasos" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CasosDePrueba" />
-      <option name="METHOD_NAME" value="cp001_btnISFallidoApple" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.CasosDePrueba.CP001_Buscar_Genero" />
+        <item itemvalue="TestNG.CasosDePrueba.CP001_Buscar_Genero (1)" />
+        <item itemvalue="TestNG.CasosDePrueba.CP004_IS_Google" />
         <item itemvalue="TestNG.CasosDePrueba.CP005_IS_fono" />
         <item itemvalue="TestNG.CasosDePrueba.CP004_IS_fono" />
-        <item itemvalue="TestNG.CasosDePrueba.CP003_IS_Google" />
-        <item itemvalue="TestNG.CasosDePrueba.cp001_btnISFallidoApple" />
-        <item itemvalue="TestNG.CasosDePrueba.CP003_Iniciar_Sesion_Fb" />
       </list>
     </recent_temporary>
   </component>

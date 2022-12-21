@@ -1,57 +1,48 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.*;
 
-
-import java.util.concurrent.TimeUnit;
 
 public class CasosDePrueba {
-    //Atributos
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private JavascriptExecutor js;
-    private String rutaDriver= System.getProperty("user.dir")+"\\src\\test\\resources\\drivers\\chromedriver.exe";
-    private String propertyDriver = "webdriver.chrome.driver";
 
-    @AfterMethod
-    public void posCondicion(){
-        driver.close();
-    }
+    private HomePage homePage;
+    private RegisterPage registerPage;
+    private SearchPage searchPage;
+
+    private WebDriver driver;
+    private String browser = "CHROME"; //Este valor eventualmente se vera modificado
+    private String propertyDriver = "webdriver.chrome.driver";
+    private String urlDriver = System.getProperty("user.dir")+"\\src\\test\\resources\\drivers\\chromedriver.exe";
+    private String url = "https://open.spotify.com/";
 
     @BeforeMethod
-    public void preCondiciones(){
-        System.setProperty(propertyDriver,rutaDriver);
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(40, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver,10);
-        js = (JavascriptExecutor) driver;
-        driver.navigate().to("https://open.spotify.com/");
-        driver.manage().window().maximize();
+    public void preparacionTests(){
+        homePage = new HomePage(driver); //Se crea la page del home
+        homePage.conexionBrowser(browser,propertyDriver,urlDriver); //Se conecta el driver de chrome
+        registerPage = new RegisterPage(homePage.getDriver()); //se crea la page de registro
+        //--------------------------------------------------------------------------------------------------
+        searchPage = new SearchPage(homePage.getDriver());
+        homePage.cargarPagina(url);
+        homePage.maximizarBrowser();
+    }
+
+    @AfterMethod
+    public void posTests(){
+        registerPage.cerrarBrowser();
     }
 
     @Test
     public void CP001_Buscar_Genero() throws InterruptedException {
-        By verBtnBuscar = By.xpath("//*[@id=\"main\"]/div/div[2]/nav/div[1]/ul/li[2]/a/span");
-        wait.until(ExpectedConditions.presenceOfElementLocated(verBtnBuscar));
-        WebElement btnBuscar = driver.findElement(verBtnBuscar);
-        btnBuscar.click();
-        Thread.sleep(3000);
-        By verInputBuscar = By.xpath("//input[@placeholder='¿Qué te apetece escuchar?']");
-        driver.findElement(verInputBuscar).sendKeys("Hip-Hop");
-        By verMixGenero = By.xpath("//*[@id=\"searchPage\"]/div/div/section[5]/div[2]/div[1]/div/div[2]/a/div");
-        wait.until(ExpectedConditions.presenceOfElementLocated(verMixGenero));
-        WebElement mixGenero = driver.findElement(verMixGenero);
-        Assert.assertEquals(mixGenero.getText(),"Mix Hip Hop");
+        homePage.irABuscar();
+        searchPage.escribirBuscador("Hip hop");
+        Assert.assertEquals(searchPage.obtenerGenero(),"Hip hop");
     }
 
     @Test
@@ -60,12 +51,12 @@ public class CasosDePrueba {
         By iniciarBtn = By.xpath("//button[@data-testid='login-button']");
         WebElement btnIniciarFb = driver.findElement(iniciarBtn);
         btnIniciarFb.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-testid='facebook-login']"))).click();
+        //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-testid='facebook-login']"))).click();
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("juan.ferreira@tsoftglobal.com");
         driver.findElement(By.xpath("//input[@id='pass']")).sendKeys("a1b2c3d4");
         driver.findElement(By.xpath("//*[@id=\"loginbutton\"]")).click();
         By alertaIS = By.xpath("//*[@id=\"globalContainer\"]/div[3]/div/div/div");
-        wait.until(ExpectedConditions.presenceOfElementLocated(alertaIS));
+        //wait.until(ExpectedConditions.presenceOfElementLocated(alertaIS));
         WebElement alerta = driver.findElement(alertaIS);
         Assert.assertEquals(alerta.getText(), "El correo electrónico que has introducido no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión.");
     }
@@ -101,7 +92,7 @@ public class CasosDePrueba {
         By iniciarGG = By.xpath("//button[@data-testid='login-button']");
         WebElement btnIniciar = driver.findElement(iniciarGG);
         btnIniciar.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath ("//button[@data-testid='google-login']"))).click();
+        //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath ("//button[@data-testid='google-login']"))).click();
         Assert.assertEquals(driver.getTitle(),"Inicia sesión: Cuentas de Google");
 
     }
@@ -111,14 +102,14 @@ public class CasosDePrueba {
         By iniciarFono = By.xpath("//button[@data-testid='login-button'] ");
         WebElement btnInicNum = driver.findElement(iniciarFono);
         btnInicNum.click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-testid='phone-login']"))).click();
+        //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-testid='phone-login']"))).click();
         driver.findElement(By.xpath("//input[@id='phonelogin-phonenumber']")).sendKeys("123454321");
         By siguienteBtn = By.xpath("//*[@id=\"phonelogin-button\"]/div[1]/p");
         WebElement btnSiguiente = driver.findElement(siguienteBtn);
         btnSiguiente.click();
         By alerta = By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[1]/span");
         WebElement msjeAlerta = driver.findElement(alerta);
-        wait.until(ExpectedConditions.presenceOfElementLocated(alerta));
+        //wait.until(ExpectedConditions.presenceOfElementLocated(alerta));
         Assert.assertEquals(driver.findElement(alerta).getText(),"Comprueba el número de teléfono.");
         Thread.sleep(2000);
     }
