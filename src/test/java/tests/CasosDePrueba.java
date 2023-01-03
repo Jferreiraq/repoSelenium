@@ -41,16 +41,18 @@ public class CasosDePrueba {
     @Test
     public void CP001_Buscar_Genero() throws InterruptedException {
         homePage.irABuscar();
-        searchPage.escribirBuscador("Hip hop");
-        Assert.assertEquals(searchPage.obtenerGenero(),"Hip hop");
+        searchPage.escribirBuscador("Pop");
+        Assert.assertEquals(searchPage.obtenerGenero(),"Pop");
     }
 
     @Test
     public void CP002_Iniciar_Sesion_Fb(){
-
+        esperarXSegundos(2000);
         By iniciarBtn = By.xpath("//button[@data-testid='login-button']");
+        esperarXSegundos(2000);
         WebElement btnIniciarFb = driver.findElement(iniciarBtn);
         btnIniciarFb.click();
+        esperarXSegundos(2000);
         //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-testid='facebook-login']"))).click();
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("juan.ferreira@tsoftglobal.com");
         driver.findElement(By.xpath("//input[@id='pass']")).sendKeys("a1b2c3d4");
@@ -59,6 +61,9 @@ public class CasosDePrueba {
         //wait.until(ExpectedConditions.presenceOfElementLocated(alertaIS));
         WebElement alerta = driver.findElement(alertaIS);
         Assert.assertEquals(alerta.getText(), "El correo electrónico que has introducido no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión.");
+    }
+
+    private void esperarXSegundos(int i) {
     }
 
     @Test
